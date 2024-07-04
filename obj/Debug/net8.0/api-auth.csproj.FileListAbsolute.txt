@@ -133,3 +133,4 @@
 /Users/thiagoguedes/Projects/Api-auth/api-auth/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/thiagoguedes/Projects/Api-auth/api-auth/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /Users/thiagoguedes/Projects/Api-auth/api-auth/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/thiagoguedes/Projects/Api-auth/api-auth/obj/Debug/net8.0/api-auth.sourcelink.json

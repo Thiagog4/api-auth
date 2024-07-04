@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api_auth.data;
 using api_auth.models;
+using api_auth.services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_auth.Controllers
@@ -14,11 +15,13 @@ namespace api_auth.Controllers
     {
         private readonly SqliteContext _contexto;
 
-        public AuthController(SqliteContext contexto)
+        private readonly IConfiguration _configuration;
+
+        public AuthController(SqliteContext contexto, IConfiguration configuration)
         {
             _contexto = contexto;
+            _configuration = configuration;
         }
-
 
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
@@ -28,7 +31,9 @@ namespace api_auth.Controllers
             var user = _contexto.Usuarios.FirstOrDefault(x => x.Nome == request.Nome && x.Senha == request.Senha);
             if (user != null)
             {
-                return Ok();
+                var token = TokenService.GenerateToken(user, _configuration);
+                
+                return Ok(new { token });
             }
             else
             {
